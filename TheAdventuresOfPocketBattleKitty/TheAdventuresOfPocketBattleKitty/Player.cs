@@ -6,6 +6,7 @@ public class Player
 {    
     public string name = "Mittens";
     public int hp;
+    public int maxHp;
     public int damage;
     public int defence;
     public int attacks;
@@ -15,9 +16,24 @@ public class Player
     public int fish;
     public Player()
     {
-        hp = 5;
+        hp =maxHp =  5;
         damage = 5;
         defence = 2;
         attacks = 1;
+    }
+
+    public virtual void TakeDamage(int damage)
+    {
+        hp -= damage;
+        hp = (hp < 0) ? 0 : hp;
+        if (hp <= 0)
+        {
+            Death();
+        }
+    }
+
+    private void Death()
+    {
+        
     }
 }

@@ -7,10 +7,14 @@ public class Menu
     public static Player p = new Player();
     public static void Go()
     {
-        string a = Color.HEALTH + "*";
-        string b = Color.BLOOD + "*";
+        string a = (p.hp>0)?Color.HEALTH :Color.BLOOD;
+        string b = (p.hp >= p.maxHp * 2 / 5) ?Color.HEALTH :Color.BLOOD;
+        string c = (p.hp >= p.maxHp * 3 / 5) ?Color.HEALTH :Color.BLOOD;
+        string d = (p.hp >= p.maxHp*4/5)?Color.HEALTH :Color.BLOOD;
+        string e = (p.hp >=p.maxHp) ? Color.HEALTH : Color.BLOOD;
+        Console.Clear();
         Write.Line(Color.SPEAK+"Welcome Mittens, What do you wish to do?");
-        Write.Line(0, 7, Color.HEALTH+"HP:        " + Color.RESET + a+a+a+a+a+a+a+a+a+a+a+a+a+a+a+b+b);
+        Write.Line(0, 7, Color.HEALTH+"HP:        " +a+"*"+b + "*" + c + "*" + d + "*" + e + "*");
         Write.Line(0, 8, Color.DAMAGE+"Pounce:   " + Color.RESET + $" {p.damage}");
         Write.Line(0, 9, Color.MITIGATION+"Defence:  " + Color.RESET + $" {p.defence}");
         Write.Line(0, 10, Color.CLASS+"Scratches:" + Color.RESET + $" { p.attacks}");
@@ -25,5 +29,7 @@ public class Menu
         Write.Line(0, 27, "["+Color.NAME+"M"+Color.RESET+     "]"+Color.NAME + "editate for Random Prizes");
         Write.Line(0, 28, "["+Color.CLASS+ "C" + Color.RESET + "]" + Color.CLASS + "atch a fish");
         Return.Option();
+        p.TakeDamage(1);
+        Go();
     }    
 }
