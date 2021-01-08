@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
+using System.Threading;
 
 public class Menu
 {
@@ -28,8 +28,37 @@ public class Menu
         Write.Line(0, 26, "["+Color.XP+"E"+Color.RESET+     "]"+Color.XP + "xhange Purrs for Cat Nip");
         Write.Line(0, 27, "["+Color.NAME+"M"+Color.RESET+     "]"+Color.NAME + "editate for Random Prizes");
         Write.Line(0, 28, "["+Color.CLASS+ "C" + Color.RESET + "]" + Color.CLASS + "atch a fish");
-        Return.Option();
-        p.TakeDamage(1);
+        string choice = Return.Option();
+        if (choice == "c") Fish();
         Go();
-    }    
+    }
+
+    private static void Fish()
+    {
+        Console.Clear();
+        Write.Line("  [ 20 Fish Will Get Auto Traded. ]  ");
+        Write.Line("    [ Whenever you have 20 Fish. ]    ");
+        Write.Line("       [ Session Only Game. ]        ");
+        Write.Line("          [ Fish Time. ]             ");
+        Write.Line("     [ Now Fishing in masters ]     ");
+
+        Write.Line("         [ Goldfish Bowl... ]        ");
+        Write.Line("......................................");
+        Write.Line(".                                     ");
+        Write.Line("       ___________                    ");
+        Write.Line("       \\_________/                    ");
+
+        Write.Line("       /         \\    /\\_/\\           ");
+        Write.Line("       \\  )=(o)  /   =(o.o)=          ");
+        Write.Line("        \\_______/     (____)~~        ");
+        Write.Line(".                                     ");
+        Write.Line("......................................");
+        Write.Line("You caught...                         ");
+        Write.Line(0,16,"......................................");        
+        int caught = Return.RandomInt(0, 8);
+        Thread.Sleep(1500);
+        Write.Line(14,15,(caught < 3) ? " a fish" : (caught < 5)?" fish poo":"nothing");
+        if (caught < 3) p.fish++;
+        Write.KeyPress(0,28);
+    }
 }
