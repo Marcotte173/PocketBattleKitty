@@ -14,6 +14,7 @@ public class Player
     public int refresh;
     public int xp;
     public int fish;
+    public int eaten;
     public Player()
     {
         hp =maxHp =  5;
